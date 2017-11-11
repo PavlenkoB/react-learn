@@ -1,0 +1,9 @@
+.emailField{
+    display: block;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+.submitBtn{
+    border-radius: 10px;
+    border: 0;
+}
