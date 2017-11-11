@@ -2,5 +2,7 @@ body {
     margin: 0;
     padding: 10px;
     font-family: sans-serif;
-    background: gray;
+}
+button, input{
+    border-radius: 5px;
 }
