@@ -8,8 +8,9 @@
 //     , document.getElementById('root')
 // );
 import {createStore} from 'redux';
-function playlist(state= [],action){
-    if(action.type ==='ADD_TRACK'){
+
+function playlist(state = [], action) {
+    if (action.type === 'ADD_TRACK') {
         return [
             ...state,
             action.payload
@@ -17,11 +18,25 @@ function playlist(state= [],action){
     }
     return state
 }
-const store =createStore(playlist);
 
-store.subscribe(()=>{
-   console.log('subscribe',store.getState());
+const store = createStore(playlist);
+
+const addTrackBtn = document.querySelectorAll('.addTrack')[0];
+const trackInput = document.querySelectorAll('.trackInput')[0];
+const list = document.querySelectorAll('.list')[0];
+
+store.subscribe(() => {
+    list.innerHTML = '';
+    trackInput.value = '';
+    store.getState().forEach(track => {
+        const li = document.createElement('li');
+        li.textContent = track;
+        list.appendChild(li);
+    })
 });
 
-store.dispatch({type: 'ADD_TRACK', payload:'Smells like spirit'});
-store.dispatch({type: 'ADD_TRACK', payload:'Enter sandmen'});
+
+addTrackBtn.addEventListener('click', () => {
+    const trackName = trackInput.value;
+    store.dispatch({type: 'ADD_TRACK', payload: trackName});
+});
