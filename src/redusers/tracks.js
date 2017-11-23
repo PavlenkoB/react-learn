@@ -1,7 +1,4 @@
-const initialState = [
-        'Smell like spirit',
-        'Enter Sandmen'
-    ];
+const initialState = [];
 
 export default function playlist(state = initialState, action) {
     if (action.type === 'ADD_TRACK') {
