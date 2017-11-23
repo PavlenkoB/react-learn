@@ -2,26 +2,16 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import {Provider} from 'react-redux';
 import {createStore} from 'redux';
-import './index.css';
+
 import App from './App';
+import './index.css';
+import reducer from './redusers/index';
 
 
-const initialState=[
-    'Smell like spirit',
-    'Enter Sandmen'
-];
 
-function playlist(state = initialState, action) {
-    if (action.type === 'ADD_TRACK') {
-        return [
-            ...state,
-            action.payload
-        ];
-    }
-    return state
-}
 
-const store = createStore(playlist, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
+
+const store = createStore(reducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
 
 ReactDOM.render(
     <Provider store={store}>
@@ -33,7 +23,7 @@ ReactDOM.render(
 
 // import {createStore} from 'redux';
 //
-// function playlist(state = [], action) {
+// function playlist.js(state = [], action) {
 //     if (action.type === 'ADD_TRACK') {
 //         return [
 //             ...state,
@@ -43,7 +33,7 @@ ReactDOM.render(
 //     return state
 // }
 //
-// const store = createStore(playlist);
+// const store = createStore(playlist.js);
 //
 // const addTrackBtn = document.querySelectorAll('.addTrack')[0];
 // const trackInput = document.querySelectorAll('.trackInput')[0];
