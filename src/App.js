@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 
 import {connect} from 'react-redux';
 
+import {getTracks} from './actions/tracks';
+
 class App extends Component {
     addTrack() {
         let trackValue = this.trackInput.value;
@@ -9,6 +11,7 @@ class App extends Component {
         this.props.onAddTrack(trackValue);
         this.trackInput.value = '';
     }
+
     findTrack() {
         let trackValue = this.searchInput.value;
         this.props.onFindTrack(trackValue);
@@ -31,6 +34,9 @@ class App extends Component {
                     }} type="text" placeholder="Find Track"/>
                     <button onClick={this.findTrack.bind(this)}>Find track</button>
                 </div>
+                <div>
+                    <button onClick={this.props.onGetTracks}>Get tracks</button>
+                </div>
                 <ul>
                     {this.props.tracks.map((track, index) =>
                         <li key={index}>{track.name}</li>
@@ -43,7 +49,7 @@ class App extends Component {
 
 export default connect(
     state => ({
-        tracks: state.tracks.filter(track =>  track.name.includes(
+        tracks: state.tracks.filter(track => track.name.includes(
             state.filterTracks
         ))
     }),
@@ -55,8 +61,11 @@ export default connect(
             };
             dispatch({type: 'ADD_TRACK', payload: payload});
         },
-        onFindTrack: (name)=>{
-            dispatch({type: 'FIND_TRACK',payload: name})
+        onFindTrack: (name) => {
+            dispatch({type: 'FIND_TRACK', payload: name})
+        },
+        onGetTracks: () => {
+            dispatch(getTracks());
         }
     })
 )(App);
