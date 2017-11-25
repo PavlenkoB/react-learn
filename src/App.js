@@ -3,6 +3,7 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 
 import {getTracks} from './actions/tracks';
+import Menu from './Menu';
 
 class App extends Component {
     addTrack() {
