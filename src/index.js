@@ -1,27 +1,15 @@
-// import React from 'react';
-// import ReactDOM from 'react-dom';
-// import './index.css';
-// import App from './App';
-//
-// ReactDOM.render(
-//     <App />
-//     , document.getElementById('root')
-// );
-import {createStore} from 'redux';
-function playlist(state= [],action){
-    if(action.type ==='ADD_TRACK'){
-        return [
-            ...state,
-            action.payload
-        ];
-    }
-    return state
-}
-const store =createStore(playlist);
+import React from 'react'
+import {render} from 'react-dom'
+import {Provider} from 'react-redux'
+import {createStore} from 'redux'
+import todoApp from './reducers'
+import App from './components/App'
 
-store.subscribe(()=>{
-   console.log('subscribe',store.getState());
-});
+let store = createStore(todoApp)
 
-store.dispatch({type: 'ADD_TRACK', payload:'Smells like spirit'});
-store.dispatch({type: 'ADD_TRACK', payload:'Enter sandmen'});
+render(
+    <Provider store={store}>
+        <App/>
+    </Provider>,
+    document.getElementById('root')
+)
