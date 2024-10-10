@@ -1,7 +1,11 @@
 function CostItem(){
     return (
-        <h2>Element cost</h2>
-    )
+        <div>
+            <div>Date</div>
+            <div>Title</div>
+            <div>Sum</div>
+        </div>
+    );
 }
 
 export default CostItem;
