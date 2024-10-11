@@ -26,7 +26,7 @@ function App() {
                 date={costs[0].date}
                 description={costs[0].description}
                 amount={costs[0].amount}
-            ></CostItem>
+            />
         </div>
     );
 }
